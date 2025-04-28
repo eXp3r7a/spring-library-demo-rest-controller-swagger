@@ -1,6 +1,7 @@
 package com.example.spring_rest_controller_swagger.services;
 
 import com.example.spring_rest_controller_swagger.entities.User;
+import com.example.spring_rest_controller_swagger.exceptions.CustomBadRequestException;
 import com.example.spring_rest_controller_swagger.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class UserService {
     }
 
     public User findUser(Long id){
-        return userRepository.findById(id).orElseThrow(()-> new RuntimeException("User with this ID not found!"));
+        return userRepository.findById(id).orElseThrow(()-> new CustomBadRequestException("User with this ID not found!"));
     }
 
     public List<User> findAllUsers(){
